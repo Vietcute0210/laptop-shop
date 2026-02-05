@@ -81,7 +81,9 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="fullName" class="form-label">Full Name</label>
-                                        <form:input type="text" class="form-control" path="fullName" required="true" />
+                                        <form:input type="text" class="form-control is-invalid" path="fullName"
+                                            required="true" />
+                                        <form:errors path="fullName" style="color: red;" cssClass="invalid-feedback" />
                                     </div>
                                     <div class="mb-3">
                                         <label for="address" class="form-label">Address</label>

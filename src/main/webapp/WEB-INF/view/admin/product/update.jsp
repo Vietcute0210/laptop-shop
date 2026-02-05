@@ -44,9 +44,73 @@
                                 <form:form action="/admin/product/update" method="POST" modelAttribute="product"
                                     enctype="multipart/form-data">
 
+                                    <div class="mb-3" style="display: none">
+                                        <form:input type="text" class="form-control" path="id" />
+                                    </div>
+
                                     <div class="mb-3">
-                                        <label class="form-label">ID:</label>
-                                        <form:input type="text" class="form-control" path="id" disabled="true" />
+                                        <label class="form-label">Name:</label>
+                                        <c:set var="errorName">
+                                            <form:errors path="name" />
+                                        </c:set>
+                                        <form:input type="text"
+                                            class="form-control ${not empty errorName ? 'is-invalid' : ''}"
+                                            path="name" />
+                                        <form:errors path="name" cssClass="invalid-feedback" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Price:</label>
+                                        <c:set var="errorPrice">
+                                            <form:errors path="price" />
+                                        </c:set>
+                                        <form:input type="number" step="0.1"
+                                            class="form-control ${not empty errorPrice ? 'is-invalid' : ''}"
+                                            path="price" />
+                                        <form:errors path="price" cssClass="invalid-feedback" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Quantity:</label>
+                                        <c:set var="errorQuantity">
+                                            <form:errors path="quantity" />
+                                        </c:set>
+                                        <form:input type="number"
+                                            class="form-control ${not empty errorQuantity ? 'is-invalid' : ''}"
+                                            path="quantity" />
+                                        <form:errors path="quantity" cssClass="invalid-feedback" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Detail Description:</label>
+                                        <c:set var="errorDetail">
+                                            <form:errors path="detailDesc" />
+                                        </c:set>
+                                        <form:textarea
+                                            class="form-control ${not empty errorDetail ? 'is-invalid' : ''}"
+                                            path="detailDesc" rows="5"></form:textarea>
+                                        <form:errors path="detailDesc" cssClass="invalid-feedback" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Short Description:</label>
+                                        <c:set var="errorShort">
+                                            <form:errors path="shortDesc" />
+                                        </c:set>
+                                        <form:input type="text"
+                                            class="form-control ${not empty errorShort ? 'is-invalid' : ''}"
+                                            path="shortDesc" />
+                                        <form:errors path="shortDesc" cssClass="invalid-feedback" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Factory:</label>
+                                        <form:input type="text" class="form-control" path="factory" />
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label class="form-label">Target:</label>
+                                        <form:input type="text" class="form-control" path="target" />
                                     </div>
 
                                     <div class="mb-3">
@@ -55,58 +119,18 @@
                                             accept=".png, .jpg, .jpeg" />
                                     </div>
                                     <div class="mb-3">
-                                        <%-- 2. Hiển thị ảnh hiện tại của product nếu có --%>
+                                        <%-- Image Display and Preview --%>
                                         <c:if test="${not empty product.image}">
                                             <div id="currentProductImage">
-                                                <p>Current Product Image:</p>
-                                                <img src="/images/products/${product.image}" alt="Product Image"
+                                                <p>Current Image:</p>
+                                                <img src="/images/products/${product.image}"
                                                     style="max-width: 150px; margin-bottom: 10px; border-radius: 5px; display: block;" />
                                             </div>
                                         </c:if>
-                                        <label class="form-label">Preview Product Image:</label>
-                                        <%-- 3. Nơi hiển thị ảnh mới khi chọn file (Preview) --%>
+                                        <label class="form-label">New Preview:</label>
                                         <img id="productPreview"
                                             style="display: none; max-width: 150px; border-radius: 5px; border: 2px dashed #ccc; padding: 5px;" />
-
                                     </div>
-
-                                    <div class="mb-3" style="display: none">
-                                        <form:input type="text" class="form-control" path="id" />
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label class="form-label">Name:</label>
-                                        <form:input type="text" class="form-control" path="name" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Price:</label>
-                                        <form:input type="number" class="form-control" path="price" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Quantity:</label>
-                                        <form:input type="number" class="form-control" path="quantity" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Detail Description:</label>
-                                        <form:input type="text" class="form-control" path="detailDesc" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Short Description:</label>
-                                        <form:input type="text" class="form-control" path="shortDesc" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Sold:</label>
-                                        <form:input type="number" class="form-control" path="sold" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Factory:</label>
-                                        <form:input type="text" class="form-control" path="factory" />
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Target:</label>
-                                        <form:input type="text" class="form-control" path="target" />
-                                    </div>
-
 
                                     <button type="submit" class="btn btn-warning">Update</button>
                                     <a href="/admin/product" class="btn btn-secondary">Cancel</a>

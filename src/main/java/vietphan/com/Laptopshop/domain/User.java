@@ -2,7 +2,6 @@ package vietphan.com.laptopshop.domain;
 
 import java.util.List;
 
-import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,8 +11,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name = "users")
@@ -22,31 +21,28 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Email
+    @Email(message = "Email không hợp lệ", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     @NotNull
     private String email;
 
     @NotNull
-    @Min(value = 3, message = "Password must be at least 3 characters long")
+    @Size(min = 3, message = "Mật khẩu phải có ít nhất 3 ký tự")
     private String password;
 
     @NotNull
-    @Min(value = 3, message = "Full name must be at least 3 characters long")
+    @Size(min = 3, message = "Tên đầy đủ phải có ít nhất 3 ký tự")
     private String fullName;
 
     private String address;
 
     private String phone;
-    
+
     private String avatar;
 
-    //RoleID
-    //User many to one role
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
 
-    //OrderId one to many
     @OneToMany(mappedBy = "user")
     private List<Order> orders;
 
@@ -140,5 +136,5 @@ public class User {
         return "User [id=" + id + ", email=" + email + ", password=" + password + ", fullName=" + fullName
                 + ", address=" + address + ", phone=" + phone + ", avatar=" + avatar + "]";
     }
-    
+
 }

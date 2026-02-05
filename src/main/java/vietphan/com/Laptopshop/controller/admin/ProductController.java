@@ -2,6 +2,7 @@ package vietphan.com.laptopshop.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.Valid;
 import vietphan.com.laptopshop.domain.Product;
 import vietphan.com.laptopshop.service.ProductService;
 
@@ -27,17 +29,21 @@ public class ProductController {
         return "admin/product/show";
     }
 
-    @PostMapping("/admin/product/create")
-    public String createProduct(Model model, @ModelAttribute("newProduct") Product newProduct,
-            @RequestParam(name = "productFile", required = false) MultipartFile productFile) {
-        this.productService.saveProduct(newProduct, productFile);
-        return "redirect:/admin/product";
-    }
-
     @GetMapping("/admin/product/create")
     public String getCreateProductPage(Model model) {
         model.addAttribute("newProduct", new Product());
         return "admin/product/create";
+    }
+
+    @PostMapping("/admin/product/create")
+    public String createProduct(Model model, @ModelAttribute("newProduct") @Valid Product newProduct,
+            BindingResult newProductBindingResult,
+            @RequestParam(name = "productFile", required = false) MultipartFile productFile) {
+        if (newProductBindingResult.hasErrors()) {
+            return "admin/product/create";
+        }
+        this.productService.saveProduct(newProduct, productFile);
+        return "redirect:/admin/product";
     }
 
     @GetMapping("/admin/product/{id}")
@@ -53,7 +59,7 @@ public class ProductController {
         model.addAttribute("newProduct", pr);
         model.addAttribute("product", this.productService.getProductById(id));
         return "admin/product/delete";
-    }               
+    }
 
     @PostMapping("/admin/product/delete")
     public String postDeleteProduct(Model model, @ModelAttribute("newProduct") Product product) {
@@ -69,8 +75,12 @@ public class ProductController {
     }
 
     @PostMapping("/admin/product/update")
-    public String postUpdateProduct(Model model, @ModelAttribute("product") Product product,
+    public String postUpdateProduct(Model model, @ModelAttribute("product") @Valid Product product,
+            BindingResult productBindingResult,
             @RequestParam(name = "productFile", required = false) MultipartFile productFile) {
+        if (productBindingResult.hasErrors()) {
+            return "admin/product/update";
+        }
         this.productService.updateProduct(product, productFile);
         return "redirect:/admin/product";
     }

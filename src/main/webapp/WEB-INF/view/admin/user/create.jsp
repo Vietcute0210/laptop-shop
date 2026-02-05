@@ -46,14 +46,16 @@
                                     enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label class="form-label">Email:</label>
-                                        <form:input type="email" class="form-control" path="email" />
-                                        <div id="emailHelp" class="form-text">
+                                        <form:input type="email" class="form-control is-invalid" path="email" />
+                                        <form:errors path="email" style="color: red;" cssClass="invalid-feedback" />
+                                        <div id=" emailHelp" class="form-text">
                                             We'll never share your email with anyone else.
                                         </div>
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Password:</label>
-                                        <form:input type="password" class="form-control" path="password" />
+                                        <form:input type="password" class="form-control is-invalid" path="password" />
+                                        <form:errors path="password" style="color: red;" cssClass="invalid-feedback" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Phone number:</label>
@@ -61,7 +63,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Full name:</label>
-                                        <form:input type="text" class="form-control" path="fullName" />
+                                        <form:input type="text" class="form-control is-invalid" path="fullName" />
+                                        <form:errors path="fullName" style="color: red;" cssClass="invalid-feedback" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Address:</label>

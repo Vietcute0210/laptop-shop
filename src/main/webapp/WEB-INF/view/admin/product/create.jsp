@@ -46,15 +46,18 @@
                                     enctype="multipart/form-data">
                                     <div class="mb-3">
                                         <label class="form-label">Name:</label>
-                                        <form:input type="text" class="form-control" path="name" />
+                                        <form:input type="text" class="form-control is-invalid" path="name" />
+                                        <form:errors path="name" style="color: red;" cssClass="invalid-feedback" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Price:</label>
-                                        <form:input type="number" class="form-control" path="price" />
+                                        <form:input type="number" class="form-control is-invalid" path="price" />
+                                        <form:errors path="price" style="color: red;" cssClass="invalid-feedback" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Quantity:</label>
-                                        <form:input type="number" class="form-control" path="quantity" />
+                                        <form:input type="number" class="form-control is-invalid" path="quantity" />
+                                        <form:errors path="quantity" style="color: red;" cssClass="invalid-feedback" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Detail Description:</label>
@@ -66,7 +69,8 @@
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Sold:</label>
-                                        <form:input type="number" class="form-control" path="sold" />
+                                        <form:input type="number" class="form-control is-invalid" path="sold" />
+                                        <form:errors path="sold" style="color: red;" cssClass="invalid-feedback" />
                                     </div>
                                     <div class="mb-3">
                                         <label class="form-label">Factory:</label>
