@@ -5,6 +5,8 @@ import vietphan.com.laptopshop.repository.UserRepository;
 
 import java.util.List;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ import vietphan.com.laptopshop.service.UserService;
 public class UserController {
 
     private final UserService userService;
+    
 
     public UserController(UserService userService) {
         this.userService = userService;
