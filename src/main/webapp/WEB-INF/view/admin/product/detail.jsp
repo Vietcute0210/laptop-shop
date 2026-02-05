@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>User Detail - Laptopshop</title>
+    <title>Product Detail - Laptopshop</title>
     <jsp:include page="../layout/head.jsp" />
 </head>
 
@@ -16,17 +16,17 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Users</h1>
+                    <h1 class="mt-4">Products</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                        <li class="breadcrumb-item"><a href="/admin/user">Users</a></li>
+                        <li class="breadcrumb-item"><a href="/admin/product">Products</a></li>
                         <li class="breadcrumb-item active">Detail</li>
                     </ol>
                     <div class="mt-5">
                         <div class="row">
                             <div class="col-12 mx-auto">
                                 <div class="d-flex justify-content-between align-items-center mb-3">
-                                    <h3 class="m-0">Detail User ${user.id}</h3>
+                                    <h3 class="m-0">Detail Product ${product.id}</h3>
                                 </div>
                                 <hr />
                                 <div class="card" style="width: 60%;">
@@ -34,21 +34,24 @@
                                         Featured
                                     </div>
                                     <ul class="list-group list-group-flush">
-                                        <li class="list-group-item">ID: ${user.id}</li>
-                                        <li class="list-group-item">Email: ${user.email}</li>
-                                        <li class="list-group-item">Name: ${user.fullName}</li>
-                                        <li class="list-group-item">Address: ${user.address}</li>
-                                        <li class="list-group-item">Phone: ${user.phone}</li>
-                                        <li class="list-group-item">Role: ${user.role.name}</li>
-                                        <li class="list-group-item">Avatar:
-                                            <c:if test="${not empty user.avatar}">
-                                                <img src="/images/avatars/${user.avatar}" alt="Avatar"
+                                        <li class="list-group-item">ID: ${product.id}</li>
+                                        <li class="list-group-item">Name: ${product.name}</li>
+                                        <li class="list-group-item">Price: ${product.price}</li>
+                                        <li class="list-group-item">Short Description: ${product.shortDesc}</li>
+                                        <li class="list-group-item">Detail Description: ${product.detailDesc}</li>
+                                        <li class="list-group-item">Quantity: ${product.quantity}</li>
+                                        <li class="list-group-item">Sold: ${product.sold}</li>
+                                        <li class="list-group-item">Factory: ${product.factory}</li>
+                                        <li class="list-group-item">Target: ${product.target}</li>
+                                        <li class="list-group-item">Image:
+                                            <c:if test="${not empty product.image}">
+                                                <img src="/images/products/${product.image}" alt="Image"
                                                     style="max-width: 150px; max-height: 150px;" />
                                             </c:if>
                                         </li>
                                     </ul>
                                 </div>
-                                <a href="/admin/user" class="btn btn-success mt-3">Back</a>
+                                <a href="/admin/product" class="btn btn-success mt-3">Back</a>
                             </div>
                         </div>
                     </div>

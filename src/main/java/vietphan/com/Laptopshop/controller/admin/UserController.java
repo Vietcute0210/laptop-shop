@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import jakarta.validation.Valid;
 import vietphan.com.laptopshop.service.UserService;
 
 @Controller
@@ -73,7 +75,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/admin/user/create", method = RequestMethod.POST)
-    public String createUserPage(Model model, @ModelAttribute("newUser") User user, @RequestParam(name = "avatarFile", required = false) MultipartFile avatarFile){
+    public String createUserPage(Model model, @ModelAttribute("newUser") @Valid User user,BindingResult bindingResult, @RequestParam(name = "avatarFile", required = false) MultipartFile avatarFile ){
         System.out.println("run here" + user);
         this.userService.handleUserCreation(user, avatarFile);
         return "redirect:/admin/user";

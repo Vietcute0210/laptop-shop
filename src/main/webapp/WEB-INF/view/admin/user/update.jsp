@@ -57,7 +57,7 @@
                                         <c:if test="${not empty user.avatar}">
                                             <div id="currentAvatar">
                                                 <p>Current Avatar:</p>
-                                                <img src="/images/uploads/${user.avatar}"
+                                                <img src="/images/avatars/${user.avatar}"
                                                     style="max-width: 150px; margin-bottom: 10px; border-radius: 5px; display: block;" />
                                             </div>
                                         </c:if>

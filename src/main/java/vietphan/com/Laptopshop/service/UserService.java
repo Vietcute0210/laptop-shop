@@ -58,7 +58,7 @@ public class UserService {
         if (avatarFile != null && !avatarFile.isEmpty()) {
             try {
                 String fileName = UUID.randomUUID().toString() + "_" + avatarFile.getOriginalFilename();
-                Path uploadDir = Paths.get("src/main/webapp/resources/images/uploads");
+                Path uploadDir = Paths.get("src/main/webapp/resources/images/avatars");
                 if (!Files.exists(uploadDir)) {
                     Files.createDirectories(uploadDir);
                 }
@@ -99,7 +99,7 @@ public class UserService {
             if (avatarFile != null && !avatarFile.isEmpty()) {
                 try {
                     String fileName = UUID.randomUUID().toString() + "_" + avatarFile.getOriginalFilename();
-                    Path uploadDir = Paths.get("src/main/webapp/resources/images/uploads");
+                    Path uploadDir = Paths.get("src/main/webapp/resources/images/avatars");
                     if (!Files.exists(uploadDir)) {
                         Files.createDirectories(uploadDir);
                     }
