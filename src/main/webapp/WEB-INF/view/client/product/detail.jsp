@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html lang="en">
 
 <head>
@@ -52,14 +53,15 @@
                         <div class="col-lg-6">
                             <div class="border rounded">
                                 <a href="#">
-                                    <img src="/client/images/vegetable-item-3.png" class="img-fluid rounded" alt="Image">
+                                    <img src="/images/products/${product.image}" class="img-fluid rounded" alt="Image">
                                 </a>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <h4 class="fw-bold mb-3">Brocoli</h4>
-                            <p class="mb-3">Category: Vegetables</p>
-                            <h5 class="fw-bold mb-3">3,35 $</h5>
+                            <h4 class="fw-bold mb-3">${product.name}</h4>
+                            <p class="mb-3">Category: ${product.factory}</p>
+                            <h5 class="fw-bold mb-3">
+                                <fmt:formatNumber type="number" value="${product.price}" /> đ</h5>
                             <div class="d-flex mb-4">
                                 <i class="fa fa-star text-secondary"></i>
                                 <i class="fa fa-star text-secondary"></i>
@@ -67,10 +69,7 @@
                                 <i class="fa fa-star text-secondary"></i>
                                 <i class="fa fa-star"></i>
                             </div>
-                            <p class="mb-4">The generated Lorem Ipsum is therefore always free from repetition injected
-                                humour, or non-characteristic words etc.</p>
-                            <p class="mb-4">Susp endisse ultricies nisi vel quam suscipit. Sabertooth peacock flounder;
-                                chain pickerel hatchetfish, pencilfish snailfish</p>
+                            <p>${product.detailDesc}</p>
                             <div class="input-group quantity mb-5" style="width: 100px;">
                                 <div class="input-group-btn">
                                     <button class="btn btn-sm btn-minus rounded-circle bg-light border">
@@ -357,7 +356,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="d-flex justify-content-center my-4">
                                 <a href="#"
                                     class="btn border border-secondary px-4 py-3 rounded-pill text-primary w-100">Vew
@@ -413,7 +412,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
