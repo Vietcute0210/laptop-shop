@@ -14,6 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import vietphan.com.laptopshop.domain.Role;
 import vietphan.com.laptopshop.domain.User;
+import vietphan.com.laptopshop.domain.dto.RegisterDTO;
 import vietphan.com.laptopshop.repository.RoleRepository;
 import vietphan.com.laptopshop.repository.UserRepository;
 
@@ -117,5 +118,18 @@ public class UserService {
 
     public void deleteUserById(Long id) {
         this.userRepository.deleteById(id);
+    }
+
+    public User registerDTOtoUser(RegisterDTO registerDTO) {
+        User user = new User();
+        user.setEmail(registerDTO.getEmail());
+        user.setFullName(registerDTO.getFirstName() + " " + registerDTO.getLastName());
+        user.setPassword(registerDTO.getPassword());
+        user.setRole(this.getRoleByName("USER"));
+        return user;
+    }
+
+    public boolean checkEmailExist(String email) {
+        return this.userRepository.existsByEmail(email);
     }
 }

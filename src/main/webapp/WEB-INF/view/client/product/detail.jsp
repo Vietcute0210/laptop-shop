@@ -59,7 +59,7 @@
                         </div>
                         <div class="col-lg-6">
                             <h4 class="fw-bold mb-3">${product.name}</h4>
-                            <p class="mb-3">Category: ${product.factory}</p>
+                            <p class="mb-3">Factory: ${product.factory}</p>
                             <h5 class="fw-bold mb-3">
                                 <fmt:formatNumber type="number" value="${product.price}" /> đ</h5>
                             <div class="d-flex mb-4">
